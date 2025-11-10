@@ -38,6 +38,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var mapElement = Object.keys(window).find(k => k.startsWith("map_"));
+  var map = window[mapElement];
+
+  // Adiciona o botão de localização
+  var lc = L.control.locate({
+    position: 'topleft',
+    flyTo: true,
+    keepCurrentZoomLevel: false,
+    setView: true,
+    initialZoomLevel: 15,
+    strings: {
+      title: "Centralizar na minha localização",
+      popup: "Você está aqui!"
+    },
+    locateOptions: {
+      enableHighAccuracy: true,   // força uso do GPS
+      maximumAge: 10000,          // usa posição recente (10s)
+      timeout: 10000              // espera até 10s pela resposta
+    }
+  }).addTo(map);
+
+  // Tenta localizar imediatamente ao carregar
+  lc.start();
+});
+</script>
 <body>
     
     
