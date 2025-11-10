@@ -38,6 +38,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
 </head>
+<script>
+  // Espera o mapa ser carregado
+  document.addEventListener("DOMContentLoaded", function() {
+    // Encontra o objeto do mapa Folium (geralmente chamado "map_" seguido de um hash)
+    var mapElement = Object.keys(window).find(k => k.startsWith("map_"));
+    var map = window[mapElement];
+
+    // Adiciona o controle de localização (Leaflet.Locate)
+    L.control.locate({
+      position: 'topleft',
+      strings: { title: "Centralizar na minha localização" },
+      flyTo: true,
+      keepCurrentZoomLevel: false,
+      setView: true,
+      initialZoomLevel: 14,
+      locateOptions: {
+        enableHighAccuracy: true,
+        maxZoom: 16
+      }
+    }).addTo(map);
+  });
+</script>
 <body>
     
     
