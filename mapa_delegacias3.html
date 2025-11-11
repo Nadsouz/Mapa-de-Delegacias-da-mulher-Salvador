@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .folium-map {
+    height: 100vh !important;
+    width: 100vw !important;
+  }
+  .leaflet-control-locate {
+    z-index: 1000 !important; /* garante que o botão fica por cima */
+  }
+</style>
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
